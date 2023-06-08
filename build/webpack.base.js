@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     target: 'web', // default config
-    entry: './src/index.ts',
+    entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, '../dist'),
     },
@@ -16,14 +16,15 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                use: 'ts-loader',
+                test: /\.(jsx?|tsx?)$/,
+                use: 'babel-loader',
                 exclude: /node_modules/,
             },
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
+            template: './public/index.html',
             favicon: './public/favicon.ico',
             title: 'react template'
         })
