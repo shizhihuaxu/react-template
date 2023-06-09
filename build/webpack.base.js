@@ -6,6 +6,7 @@ module.exports = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, '../dist'),
+        publicPath: '/',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'], // to use without extension name
@@ -29,4 +30,8 @@ module.exports = {
             title: 'react template'
         })
     ],
+    // 查看编译结果用
+    // optimization: {
+    //     minimize: false,
+    // },
 }
