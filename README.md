@@ -10,13 +10,14 @@
   - webpack-merge（合并配置项）
   - HtmlWebpackPlugin（配置生成的html）
 - 框架：react 18 + react-dom 18
-- 路由：react-router-dom
+- 路由：react-router-dom 6
 - 状态管理：react-redux + redux-thunk
 - 请求库：axios 
 - 类型检查：
   - typescript 
   - @types/react 
   - @types/react-dom
+  - @types/react-router-dom
 
 - 编译器
   - babel-loader（webpack）
