@@ -1,17 +1,15 @@
-import React from 'react'
+import { lazy } from 'react'
 import { RouteObject } from 'react-router-dom'
-
-const Test = React.lazy(() => import('@/pages/test'))
-const TestChild = React.lazy(() => import('@/pages/test/child'))
+import LazyLoad from './lazy-load'
 
 export const routes: RouteObject[] = [
     {
         path: '/',
-        element: <Test />,
+        element: LazyLoad(lazy(() => import('@/pages/test'))),
         children: [
             {
                 path: 'child/:id',
-                element: <TestChild />,
+                element: LazyLoad(lazy(() => import('@/pages/test/child'))),
             }
         ]
     }
