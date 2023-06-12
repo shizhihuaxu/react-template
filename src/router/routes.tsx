@@ -10,7 +10,7 @@ export const routes: RouteObject[] = [
             {
                 path: 'child/:id',
                 element: LazyLoad(lazy(() => import('@/pages/test/child'))),
-            }
-        ]
-    }
+            },
+        ],
+    },
 ]

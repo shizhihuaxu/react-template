@@ -18,7 +18,6 @@
   - @types/react 
   - @types/react-dom
   - @types/react-router-dom
-
 - 编译器
   - babel-loader（webpack）
   - @babel/core
@@ -26,8 +25,11 @@
   - @babel/preset-env
   - @babel/preset-react
   - @babel/preset-typescript
-
-- 代码风格：Eslint 
+- 代码风格：具体见 webpack 配置和 eslintrc.js、eslintignore 文件
+  - eslint
+  - eslint-webpack-plugin
+  - @typescript-eslint/eslint-plugin
+  - @typescript-eslint/parser
 - 预处理器：SCSS（用于书写样式）+ StyleLint 14.9.1
 - 组件库：Antd
 

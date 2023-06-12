@@ -1,0 +1,10 @@
+node_modules
+dist
+.vscode
+.husky
+*.sh
+*.md
+*.woff
+*.ttf
+/public
+/docs

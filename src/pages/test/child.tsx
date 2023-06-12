@@ -1,5 +1,5 @@
 import React from 'react'
-const TestChild: React.FC<{}> = () => {
+const TestChild: React.FC = () => {
 
     return (
         <div>child</div>

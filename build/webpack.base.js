@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
     target: 'web', // default config
@@ -9,7 +10,7 @@ module.exports = {
         publicPath: '/',
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'], // to use without extension name
+        extensions: [ '.js', '.jsx', '.ts', '.tsx' ], // to use without extension name
         alias: {
             '@': path.resolve(__dirname, '../src'),
         },
@@ -27,8 +28,11 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
             favicon: './public/favicon.ico',
-            title: 'react template'
-        })
+            title: 'react template',
+        }),
+        new ESLintPlugin({
+            extensions: [ 'js', 'jsx', 'ts', 'tsx' ],
+        }),
     ],
     // 查看编译结果用
     // optimization: {
