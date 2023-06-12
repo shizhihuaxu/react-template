@@ -6,6 +6,8 @@
         "moduleResolution": "node",
         "esModuleInterop": true,
         "jsx": "preserve",
+        "noEmit": true,
+        "skipLibCheck": true,
         "baseUrl": ".",
         "paths": {
             "@/*": [
@@ -13,7 +15,5 @@
             ]
         },
     },
-    "include": [
-        "src/**/*"
-    ],
+    "include": [ "src/**/*" ]
 }
