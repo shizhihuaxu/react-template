@@ -33,6 +33,9 @@
   - @typescript-eslint/parser
 - 预处理器：SCSS（用于书写样式）+ StyleLint 14.9.1
 - 组件库：Antd
+- Git Hooks：husky
+  - commit message 校验：@commitlint/cli、@commitlint/config-conventional
+  - 代码格式化：lint-staged
 
 
 
