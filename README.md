@@ -1,7 +1,7 @@
 ## 技术选型
 
 - node 版本管理：nvm 0.39.1
-- node版本：node 16.16.0
+- node 版本：node 16.16.0
 - 包管理：yarn 1.22.19
 - 构建工具：
   - webpack 5（编译工具）
@@ -18,6 +18,7 @@
   - @types/react 
   - @types/react-dom
   - @types/react-router-dom
+  - fork-ts-checker-webpack-plugin（ts 错误输出在屏幕上）
 - 编译器
   - babel-loader（webpack）
   - @babel/core
