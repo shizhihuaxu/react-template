@@ -8,7 +8,9 @@ module.exports = {
     entry: './src/index.tsx',
     output: {
         path: path.resolve(__dirname, '../dist'),
+        filename: '[name].[chunkhash].js',
         publicPath: '/',
+        clean: true,
     },
     resolve: {
         extensions: [ '.js', '.jsx', '.ts', '.tsx' ], // to use without extension name
