@@ -15,9 +15,11 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
+        'plugin:react/recommended',
     ],
     plugins: [
         '@typescript-eslint',
+        'react',
     ],
     settings: {             //自动发现React的版本，从而进行规范react代码
         react: {
@@ -64,5 +66,6 @@ module.exports = {
         ],
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/no-var-requires': 'off',
+        'react/jsx-closing-tag-location': 'error',
     },
 }
