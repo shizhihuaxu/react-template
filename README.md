@@ -31,7 +31,12 @@
   - eslint-webpack-plugin
   - @typescript-eslint/eslint-plugin
   - @typescript-eslint/parser
-- 预处理器：SCSS（用于书写样式）+ StyleLint 14.9.1
+- 预处理器：
+  - style-loader
+  - css-loader 默认对 [name].module.[ext] 的文件开启 css modules
+  - sass 
+  - sass-loader
+  - classnames（解决css modules 中无法使用多个样式的问题）
 - 组件库：Antd
 - Git Hooks：husky
   - commit message 校验：@commitlint/cli、@commitlint/config-conventional

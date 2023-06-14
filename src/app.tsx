@@ -3,6 +3,8 @@ import { RouterProvider } from 'react-router-dom'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import router from '@/router'
+import 'antd/dist/reset.css'
+import '@/styles/utils.scss'
 
 const App = () => {
     return (
