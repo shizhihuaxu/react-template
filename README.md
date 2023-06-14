@@ -31,12 +31,15 @@
   - eslint-webpack-plugin
   - @typescript-eslint/eslint-plugin
   - @typescript-eslint/parser
-- 预处理器：
+- CSS：
   - style-loader
   - css-loader 默认对 [name].module.[ext] 的文件开启 css modules
   - sass 
   - sass-loader
   - classnames（解决css modules 中无法使用多个样式的问题）
+  - postcss
+  - postcss-loader(web pack)
+  - postcss-preset-env（内置了 `autoprefixer、postcss-nesting/postcss-nested、postcss-import` 等相关功能）
 - 组件库：Antd
 - Git Hooks：husky
   - commit message 校验：@commitlint/cli、@commitlint/config-conventional

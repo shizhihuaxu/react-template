@@ -2,4 +2,5 @@ $color: red;
 
 .container {
     color: $color;
+    user-select: none;
 }
