@@ -1,16 +1,19 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
 const resolve = dir => path.resolve(__dirname, dir)
+const isDev = process.env.NODE_ENV === 'dev'
 
 module.exports = {
+    stats: 'errors-warnings',
     target: 'web', // default config
     entry: './src/index.tsx',
     output: {
         path: resolve('../dist'),
-        filename: 'static/[name].[chunkhash:8].js',
+        filename: 'static/js/[name].[chunkhash:8].js',
         publicPath: '/',
         clean: true,
     },
@@ -29,11 +32,18 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [ 'style-loader', 'css-loader', 'postcss-loader' ],
+                use: [ 
+                    // 开发环境使用 style-looader，生产环境抽离 css
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader', 'postcss-loader', 
+                ],
             },
             {
-                test: /\.scss$/i,
-                use: [ 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader' ],
+                test: /\.scss$/,
+                use: [ 
+                    isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    'css-loader', 'postcss-loader', 'sass-loader',
+                ],
                 exclude: /node_modules/,
             },
             {
@@ -63,8 +73,19 @@ module.exports = {
         }),
         new ForkTsCheckerWebpackPlugin(),
     ],
-    // 查看编译结果用
-    // optimization: {
-    //     minimize: false,
-    // },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                // 提取 node_modules 代码
+                vendors: {
+                    test: /node_modules/, 
+                    name: 'vendors', 
+                    minChunks: 1, 
+                    chunks: 'initial',
+                    minSize: 0, 
+                    priority: 1, 
+                },
+            },
+        },
+    },
 }
