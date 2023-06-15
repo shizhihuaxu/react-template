@@ -3,19 +3,21 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 
+const resolve = dir => path.resolve(__dirname, dir)
+
 module.exports = {
     target: 'web', // default config
     entry: './src/index.tsx',
     output: {
-        path: path.resolve(__dirname, '../dist'),
-        filename: '[name].[chunkhash].js',
+        path: resolve('../dist'),
+        filename: 'static/[name].[chunkhash].js',
         publicPath: '/',
         clean: true,
     },
     resolve: {
         extensions: [ '.js', '.jsx', '.ts', '.tsx' ], // to use without extension name
         alias: {
-            '@': path.resolve(__dirname, '../src'),
+            '@': resolve('../src'),
         },
     },
     module: {
@@ -32,6 +34,7 @@ module.exports = {
             {
                 test: /\.scss$/i,
                 use: [ 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader' ],
+                exclude: /node_modules/,
             },
         ],
     },
