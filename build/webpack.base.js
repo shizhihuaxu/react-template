@@ -10,7 +10,7 @@ module.exports = {
     entry: './src/index.tsx',
     output: {
         path: resolve('../dist'),
-        filename: 'static/[name].[chunkhash].js',
+        filename: 'static/[name].[chunkhash:8].js',
         publicPath: '/',
         clean: true,
     },
@@ -35,6 +35,20 @@ module.exports = {
                 test: /\.scss$/i,
                 use: [ 'style-loader', 'css-loader', 'postcss-loader', 'sass-loader' ],
                 exclude: /node_modules/,
+            },
+            {
+                test: /\.(png|jpg|jpeg|svg)$/,
+                type: 'asset',
+                generator: {
+                    filename: 'static/imgs/[name].[contenthash:8][ext]',
+                },
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)$/,
+                type: 'asset',
+                generator: {
+                    filename: 'static/fonts/[name].[contenthash:8][ext]',
+                },
             },
         ],
     },

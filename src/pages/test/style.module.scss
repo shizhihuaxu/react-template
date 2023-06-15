@@ -3,4 +3,5 @@ $color: red;
 .container {
     color: $color;
     user-select: none;
+    background: url('~@/assets/imgs/logo.png') no-repeat;
 }

@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { Outlet, Link } from 'react-router-dom'
-import { Button, message } from 'antd'
+import { Button, Image, message } from 'antd'
 import classnames from 'classnames'
+import logo from '@/assets/imgs/logo.png'
 import style from './style.module.scss'
 
 const Test: React.FC = () => {
@@ -23,11 +24,15 @@ const Test: React.FC = () => {
             {
                 [style.container]: true,
             }, 
-            'txt-align-r',
+            'txt-align-c',
         )}>
             {contextHolder}
             <Button type="primary" onClick={info}>Primary Button</Button>
             <p>test</p>
+            <Image
+                width={50}
+                src={logo}
+            />
             <Link to={'child/1'}>to child</Link>
             <Outlet />
         </div>
