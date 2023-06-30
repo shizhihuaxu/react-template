@@ -2,7 +2,7 @@ import React from 'react'
 import { RouterProvider } from 'react-router-dom'
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
-import router from '@/router'
+import router from '@/routers'
 import 'antd/dist/reset.css'
 import '@/styles/utils.scss'
 
