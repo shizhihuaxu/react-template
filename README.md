@@ -11,7 +11,7 @@
   - HtmlWebpackPlugin（配置生成的html）
 - 框架：react 18 + react-dom 18
 - 路由：react-router-dom 6
-- 状态管理：react-redux + redux-thunk
+- 状态管理：zustand
 - 请求库：axios 
 - 类型检查：
   - typescript 
