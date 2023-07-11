@@ -41,6 +41,7 @@ module.exports = {
             'error',
             'single',
         ],
+        'jsx-quotes': [ 'error', 'prefer-single' ],
         'quote-props': [ 'error', 'as-needed' ], // 对象属性在必要时才加引号
         semi: [
             'error',

@@ -35,14 +35,16 @@ module.exports = {
                 use: [ 
                     // 开发环境使用 style-looader，生产环境抽离 css
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader', 'postcss-loader', 
+                    'css-loader', 
+                    'postcss-loader', 
                 ],
             },
             {
                 test: /\.scss$/,
                 use: [ 
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader', 'postcss-loader', 'sass-loader',
+                    'css-loader', 
+                    'postcss-loader', 'sass-loader',
                 ],
                 exclude: /node_modules/,
             },

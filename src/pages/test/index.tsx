@@ -27,13 +27,13 @@ const Test: React.FC = () => {
             'txt-align-c',
         )}>
             {contextHolder}
-            <Button type="primary" onClick={info}>Primary Button</Button>
+            <Button type='primary' onClick={info}>Primary Button</Button>
             <p>test</p>
             <Image
                 width={50}
                 src={logo}
             />
-            <Link to={'child/1'}>to child</Link>
+            <Link to={'child?id=1'}>to child</Link>
             <Outlet />
         </div>
     )

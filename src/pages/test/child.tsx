@@ -12,10 +12,10 @@ const TestChild: React.FC = () => {
     return (
         <>
             <div>这里是子页面</div>
-            <div>collapse is: {isCollapse ? '开' : '关'}</div>
+            <div>collapse is: {isCollapse ? '关' : '开'}</div>
             <div>token is: {token}</div>
             <div>username is: {username}</div>
-            <Button type="primary" onClick={() => setToken('token changed')}>改变token</Button>
+            <Button type='primary' onClick={() => setToken('token changed')}>改变token</Button>
         </>
     )
 }
