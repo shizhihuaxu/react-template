@@ -9,7 +9,7 @@ interface IUserStore {
     authRouteList: IRouteItem[]
     setToken: (token: string) => void
 }
-  
+
 export const useUserStore = create<IUserStore>()(
     persist(
         (set) => ({
@@ -18,15 +18,13 @@ export const useUserStore = create<IUserStore>()(
             authRouteList: [ ...routes ],
             setToken: (token) => set(() => ({ token: token })),
         }),
-        { 
+        {
             name: 'user', // unique name
-            // username 不持久化 
-            partialize: (state) =>
-                Object.fromEntries(
-                    Object.entries(state).filter(([ key ]) => ![ 
-                        'username', 'authRouteList',
-                    ].includes(key)),
-                ),
-        }, 
+            // 仅持久化某些字段
+            partialize: (state) => ({
+                token: state.token,
+                username: state.username,
+            }),
+        },
     ),
 )

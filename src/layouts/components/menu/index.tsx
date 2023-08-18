@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import type { MenuProps } from 'antd'
@@ -16,23 +16,27 @@ const LayoutMenu: React.FC = () => {
     const authRouteList = useUserStore((state) => state.authRouteList)
     const [ selectedKeys, setSelectedKeys ] = useState<string[]>([ pathname ])
     const [ openKeys, setOpenKeys ] = useState<string[]>([])
-    const [ menuList, setMenuList ] = useState<MenuProps['items']>([])
 
     // 获取菜单列表
-    const getMenuList = (routes: IRouteItem[]) => {
-        const menuList: MenuProps['items'] = []
+    const menuList = useMemo(() => {
+        const getMenuList = (routes: IRouteItem[]): MenuProps['items'] => {
+            const menuList: MenuProps['items'] = []
 
-        routes.forEach(item => {
-            (!item?.meta?.isHide && item?.path) && menuList.push({
-                key: item?.meta.key || item.path,
-                icon: item?.meta?.icon,
-                label: item?.meta?.title,
-                children: item?.children?.length ? getMenuList(item.children) : undefined,
+            routes.forEach(item => {
+                (!item?.meta?.isHide && item?.path) && menuList.push({
+                    key: item?.meta.key || item.path,
+                    icon: item?.meta?.icon,
+                    label: item?.meta?.title,
+                    children: item?.children?.length ? getMenuList(item.children) : undefined,
+                })
             })
-        })
 
-        return menuList
-    }
+            return menuList
+        }
+    
+        return getMenuList(authRouteList[0].children)
+    }, [ authRouteList ])
+
 
     // 获取展开的菜单 key，例如 pathname = '/test/child'，展开的项为 ['/test']
     const getOpenKeys = (pathname: string): string[] => {
@@ -50,22 +54,18 @@ const LayoutMenu: React.FC = () => {
     }
 
     useEffect(() => {
-        setMenuList(getMenuList(authRouteList[0].children))
-    }, [])
-
-    useEffect(() => {
         isCollapse ? null : setOpenKeys(getOpenKeys(pathname))
         setSelectedKeys([ pathname ])
     }, [ pathname, isCollapse ])
 
     // 点击跳转
     const navigate = useNavigate()
-    const onClickMenu: MenuProps['onClick'] = ({ key }: { key: string }) => {
+    const onClickMenu: MenuProps['onClick'] = ({ key }: { key: string }): void => {
         navigate(key)
     }
 
     // 展开
-    const onOpenChange = (openKeys: string[]) => {
+    const onOpenChange = (openKeys: string[]): void => {
         setOpenKeys(openKeys)
     }
 

@@ -16,10 +16,13 @@ module.exports = {
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
         'plugin:react/recommended',
+        'plugin:react/jsx-runtime',
+        'plugin:react-hooks/recommended',
     ],
     plugins: [
         '@typescript-eslint',
         'react',
+        'react-hooks',
     ],
     settings: {             //自动发现React的版本，从而进行规范react代码
         react: {

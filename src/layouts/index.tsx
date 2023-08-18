@@ -19,7 +19,7 @@ const AppLayout: React.FC = () => {
     useEffect(() => {
         const curRoute = searchRoute(pathname, authRouteList)
         setFullPage(!!curRoute?.meta?.isFullPage)
-    }, [ pathname ])
+    }, [ pathname, authRouteList ])
   
     return (
         isFullPage 
