@@ -9,6 +9,7 @@
   - webpack-dev-server 4（热更新, webpack serve 启动）
   - webpack-merge（合并配置项）
   - HtmlWebpackPlugin（配置生成的html）
+  - dotenv（获取env配置文件）
 - 框架：react 18 + react-dom 18
 - 路由：react-router-dom 6
 - 状态管理：zustand
@@ -44,6 +45,5 @@
 - Git Hooks：husky
   - commit message 校验：@commitlint/cli、@commitlint/config-conventional
   - 代码格式化：lint-staged
-
-
+- 工具库：lodash-es、dayjs
 

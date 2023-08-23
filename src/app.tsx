@@ -9,7 +9,7 @@ import '@/styles/utils.scss'
 const App = () => {
     return (
         <BrowserRouter>
-            <ConfigProvider  
+            <ConfigProvider
                 locale={zhCN}
                 theme={{
                     token: {

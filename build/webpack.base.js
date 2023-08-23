@@ -1,10 +1,10 @@
-const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const { resolve } = require('./utils')
 
-const resolve = dir => path.resolve(__dirname, dir)
+// NOTE 这里的 env 是由命令行参数配置的，非 env 文件配置的
 const isDev = process.env.NODE_ENV === 'dev'
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
     target: 'web', // default config
     entry: './src/index.tsx',
     output: {
-        path: resolve('../dist'),
+        path: resolve('dist'),
         filename: 'static/js/[name].[chunkhash:8].js',
         publicPath: '/',
         clean: true,
@@ -20,7 +20,7 @@ module.exports = {
     resolve: {
         extensions: [ '.js', '.jsx', '.ts', '.tsx' ], // to use without extension name
         alias: {
-            '@': resolve('../src'),
+            '@': resolve('src'),
         },
     },
     module: {
@@ -32,18 +32,18 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [ 
+                use: [
                     // 开发环境使用 style-looader，生产环境抽离 css
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader', 
-                    'postcss-loader', 
+                    'css-loader',
+                    'postcss-loader',
                 ],
             },
             {
                 test: /\.scss$/,
-                use: [ 
+                use: [
                     isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader', 
+                    'css-loader',
                     'postcss-loader', 'sass-loader',
                 ],
                 exclude: /node_modules/,
@@ -72,6 +72,8 @@ module.exports = {
         }),
         new ESLintPlugin({
             extensions: [ 'js', 'jsx', 'ts', 'tsx' ],
+            emitWarning: false,
+            failOnWarning: false,
         }),
         new ForkTsCheckerWebpackPlugin(),
     ],
@@ -80,12 +82,12 @@ module.exports = {
             cacheGroups: {
                 // 提取 node_modules 代码
                 vendors: {
-                    test: /node_modules/, 
-                    name: 'vendors', 
-                    minChunks: 1, 
+                    test: /node_modules/,
+                    name: 'vendors',
+                    minChunks: 1,
                     chunks: 'initial',
-                    minSize: 0, 
-                    priority: 1, 
+                    minSize: 0,
+                    priority: 1,
                 },
             },
         },

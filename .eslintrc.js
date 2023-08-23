@@ -50,12 +50,12 @@ module.exports = {
             'error',
             'never',
         ],
-        'comma-dangle': [ 'warn', 'always-multiline' ], // 对象、数组等最后一个元素使用尾逗号
+        'comma-dangle': [ 'error', 'always-multiline' ], // 对象、数组等最后一个元素使用尾逗号
         'comma-spacing': [ 'error', { before: false, after: true } ], // 逗号后加空格
         'prefer-template': 'error', // 优先使用字符串模板
         // 对象、函数、数组、操作符 前后空格
         'space-infix-ops': 'error',
-        'space-before-function-paren': [ 'warn', 'always' ],
+        'space-before-function-paren': [ 'error', 'always' ],
         'array-bracket-spacing': [ 'error', 'always' ],
         'object-curly-spacing': [ 'error', 'always' ],
         'arrow-spacing': [ 'error', { before: true, after: true } ],
